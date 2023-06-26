@@ -46,6 +46,5 @@ class Title extends DB
     ];
 
     $this->view("./view/title.php",$data);
-    $this->view("./view/title.php",$data);
   }
 }
