@@ -1,20 +1,22 @@
 <?php
 include_once "DB.php";
-class Title extends DB{
-
-public $header='網站標題';
-protected $add_header='新增標題區圖片';
-
-public function __construct()
+class Title extends DB
 {
+
+  public $header = '網站標題';
+  protected $add_header = '新增標題區圖片';
+
+  public function __construct()
+  {
     parent::__construct('title');
-}
+  }
 
 
-/**
- * 彈出視窗的各功能差異內容
- */
-public function add_form(){
+  /**
+   * 彈出視窗的各功能差異內容
+   */
+  public function add_form()
+  {
     $this->modal("<tr>
                     <td>標題區圖片：</td>
                     <td><input type='file' name='img'></td>
@@ -22,18 +24,28 @@ public function add_form(){
                   <tr>
                     <td>標題區替代文字：</td>
                     <td><input type='text' name='text'></td>
-                  </tr>","./api/add.php");
-}
-public function update_img($id){
+                  </tr>", "./api/add.php");
+  }
+  public function update_img($id)
+  {
     $this->modal("<tr>
                     <td>標題區圖片：</td>
                     <td><input type='file' name='img'></td>
                     <input type='hidden' name='id' value='$id'>
                   </tr>
-                ","./api/update_img.php");
-}
+                ", "./api/update_img.php");
+  }
 
-public function list(){
-    $this->view("./view/title.php");
-}
+  public function list()
+  {
+    $data=[
+      'rows'=>$this->all(),
+      'header'=>'網站標題管理',
+      'table'=>$this->table,
+      'addButton'=>'新增網站標題圖片'
+    ];
+
+    $this->view("./view/title.php",$data);
+    $this->view("./view/title.php",$data);
+  }
 }

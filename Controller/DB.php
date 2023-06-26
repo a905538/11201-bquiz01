@@ -196,8 +196,9 @@ class DB
 
         return $this->pdo->query($sql)->fetchColumn();
     }
-    function view($path)
+    function view($path,$arg=[])
     {
+        extract($arg);
         include $path;
     }
     /**
@@ -240,6 +241,7 @@ class DB
             'pages' => $pages,
             'now' => $now,
             'rows' => $start,
+            'addButton'=>"",
         ];
         return $rows;
     }
