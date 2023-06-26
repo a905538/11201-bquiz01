@@ -5,10 +5,14 @@ class Title extends DB
 
   public $header = '網站標題';
   protected $add_header = '新增標題區圖片';
-
+  public $title;
+  public $img;
+  
   public function __construct()
   {
     parent::__construct('title');
+    $this->title=$this->find(['sh'=>1])['text'];
+    $this->img=$this->find(['sh'=>1])['img'];
   }
 
 
@@ -35,7 +39,10 @@ class Title extends DB
                   </tr>
                 ", "./api/update_img.php");
   }
-
+  // function show(){
+  //   $row=$this->find(['sh'=>1]);
+  //   return [['title']=>$row['text'],'img'=>$row['img']];
+  // }
   public function list()
   {
     $data=[
